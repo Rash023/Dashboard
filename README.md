@@ -1,5 +1,3 @@
-# dashboard
-
 <h1 align="center" id="title">Social Media Dashboard</h1>
 
 <p id="description">Social Media Dashboard - the ultimate tool for managing your online presence with ease and efficiency. Seamlessly draft and schedule your posts across multiple platforms all from one centralized hub. Stay on top of your performance with comprehensive analytics tracking likes shares and comments in real-time. With intuitive features and customizable options our Social Media Dashboard is designed to streamline your workflow boost productivity and elevate your social media strategy to new heights. Experience the power of simplified management and insightful analytics with our Social Media Dashboard today.</p>
@@ -34,8 +32,45 @@ python manage.py migrate
 python manage.py runserver
 ```
 
+## Usage
+
+1. **Home Page**: Access the home page to navigate to different sections of the dashboard.
+
+2. **Schedule Post**:
+   - Navigate to the "Schedule Post" section.
+   - Fill in the title and description of the post.
+   - Click on the submit button to schedule the post.
+
+3. **Analytics**:
+   - Navigate to the "Analytics" section.
+   - View analytics to track post performance metrics.
+
+4. **Comments**:
+   - Navigate to the "Comments" section.
+   - Manage comments associated with posts.
+
+5. **Reach**:
+   - Navigate to the "Reach" section.
+   - Analyze the reach of posts.
+
+6. **User Authentication**:
+   - Use the login form to log in with your credentials.
+   - If you don't have an account, you can register using the registration form.
+
+
+## Assumptions
+
+- Each post is associated with an author (defaulted to "John Doe" if not specified).
+- Post IDs are incremented based on the count of existing posts.
+- User registration requires a unique username and a strong password.
+- User authentication is necessary to access features of the dashboard.
   
-  
+
+## Contributing
+
+Feel free to contribute to the development of this dashboard by submitting bug reports, feature requests, or pull requests.
+
+
 <h2>💻 Built with</h2>
 
 Technologies used in the project:
