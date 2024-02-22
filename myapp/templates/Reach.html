@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Reach</title>
+	<link rel="stylesheet" href="../static/css/dashboard.css">
+	<script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="../static/js/data.js"></script>
+</head>
+<body>
+
+<div class="wrapper" >
+    <div class="sidebar ">
+        <h2>Dashboard</h2>
+        <ul>
+            <li><a href="{%url 'Home' %}"><i class="fas fa-home"></i>Home</a></li>
+            <li><a href="{%url 'Post' %}"><i class="fas fa-user"></i>Schedule Post</a></li>
+            <li><a href="{%url 'Analytics' %}"><i class=" fas fa-project-diagram"></i>Overall Analytics</a></li>
+            <li><a href="{%url 'Comments'%}"><i class="fas fa-address-card"></i>View Comments</a></li>
+            <li><a href="{%url 'Reach' %}"><i class="fas fa-blog"></i>Reach</a></li>
+            
+        </ul> 
+       
+    </div>
+    <div class="main_content">
+        <section class="book" id="book">
+            <h1 class="heading">Reach Analytics</h1>
+            <div class="glass-box-plot" style="margin-top: 8px;">
+                <div id="performance" style="width: 100%; height: 400px;"></div>
+            </div>
+            <div id="totalCounts" style="margin-top: 20px;color: white; margin-left: 3rem;">
+                <p>Total Posts: <span id="totalPosts"></span></p>
+            </div>
+        </section>
+    </div>
+
+
+
+    <script>
+      window.onload = function () {
+    // Ensure that data is loaded
+    console.log(data);
+
+    // Sort data by post ID in ascending order
+    data.sort((a, b) => a.post_id - b.post_id);
+
+    // Calculate total performance (likes + comments + shares) for each post
+    const performanceData = data.map(post => post.likes + post.comments.length + post.shares);
+
+    // Calculate total performance
+    const totalPosts = data.length;
+
+    // Update total performance in the HTML
+    document.getElementById('totalPosts').innerText = totalPosts;
+
+    // Create performance plot
+    createPerformancePlot('performance', 'Performance', data.map(post => post.post_id), performanceData);
+};
+
+// Function to create performance plot
+function createPerformancePlot(containerId, metricName, postIds, performanceData) {
+    const trace = {
+        x: postIds,
+        y: performanceData,
+        mode: 'lines+markers',
+        name: metricName,
+        hoverinfo: 'y+text',
+        text: performanceData.map((val, idx) => `Post ID: ${postIds[idx]}<br>${metricName}: ${val}`)
+    };
+
+    const layout = {
+        
+        xaxis: { title: 'Post ID' },
+        yaxis: { title: metricName },
+    };
+
+    Plotly.newPlot(containerId, [trace], layout);
+}
+
+    </script>
+    </div>
+    </div>
+</div>
+
+</body>
+</html>

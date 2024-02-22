@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Comments</title>
+	<link rel="stylesheet" href="../static/css/dashboard.css">
+	<script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+    
+    <script src="../static/js/data.js"></script>
+</head>
+<body>
+
+<div class="wrapper" >
+    <div class="sidebar ">
+        <h2>Dashboard</h2>
+        <ul>
+            <li><a href="{%url 'Home' %}"><i class="fas fa-home"></i>Home</a></li>
+            <li><a href="{%url 'Post' %}"><i class="fas fa-user"></i>Schedule Post</a></li>
+            <li><a href="{%url 'Analytics' %}"><i class=" fas fa-project-diagram"></i>Overall Analytics</a></li>
+            <li><a href="{%url 'Comments'%}"><i class="fas fa-address-card"></i>View Comments</a></li>
+            <li><a href="{%url 'Reach' %}"><i class="fas fa-blog"></i>Reach</a></li>
+            
+        </ul> 
+       
+    </div>
+    <div class="main_content">
+        <section class="book" id="book">
+            <h1 class="heading" style=""> <span>View Comments</span></h1>
+            <div class="glass-box-Comment" style="margin-top:8px; display: flex; gap: 3rem; flex-direction: column;">
+                <form id="commentForm">
+                    <select id="postSelect" name="postSelect">
+                        <option value="">Select a Post</option>
+                        <!-- Populate select options with post titles -->
+                        <!-- Assuming 'data' contains the array of posts -->
+                        <!-- Change 'data' to the actual variable name if different -->
+                        <!-- Iterate over each post in the data array -->
+                        <!-- Add an option for each post title -->
+                        <!-- Set the value of each option to the post ID -->
+                        <!-- Change 'post.post_id' to the actual property name if different -->
+                        <!-- Change 'post.title' to the actual property name if different -->
+                        <!-- Use a loop to dynamically create options -->
+                        <!-- Use innerHTML to append options to the select element -->
+                        <script>
+                            // Assuming 'data' contains the array of posts
+                            // Change 'data' to the actual variable name if different
+                            // Iterate over each post in the data array
+                            // Build a string of options with post titles and IDs
+                            var options = '';
+                            for (var i = 0; i < data.length; i++) {
+                                var post = data[i];
+                                options += '<option value="' + post.post_id + '">' + post.title + '</option>';
+                            }
+                            // Append the options to the select element
+                            document.getElementById('postSelect').innerHTML += options;
+                        </script>
+                    </select>
+                    <input type="submit" class="btn" value="Show">
+                </form>
+                <div  class="Comments" id="commentsContainer" style=""></div>
+            </div>
+            
+        </section>
+    </div>
+    
+    <script>
+        document.getElementById('commentForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the default form submission
+            
+            // Get the selected post ID
+            const selectedPostId = document.getElementById('postSelect').value;
+            
+            // Get the comments container element
+            const commentsContainer = document.getElementById('commentsContainer');
+            
+            // Clear previous comments
+            commentsContainer.innerHTML = '';
+    
+            // If no post is selected, return
+            if (!selectedPostId) {
+                return;
+            }
+    
+            // Find the post in the data array
+            const selectedPost = data.find(post => post.post_id === selectedPostId);
+    
+            // If post is not found, return
+            if (!selectedPost) {
+                return;
+            }
+    
+            // Iterate over comments of the selected post
+            selectedPost.comments.forEach(comment => {
+                // Create a div element to display the comment
+                const commentDiv = document.createElement('div');
+                // Set innerHTML of comment div to display comment details
+                // Change the property names as needed
+                commentDiv.innerHTML = `
+                    <p><strong>User:</strong> ${comment.user}<br><br>
+                    <strong>Comment:</strong> ${comment.comment}<br><br>
+                    <strong>Timestamp:</strong> ${comment.timestamp}<br><br></p>
+                `;
+                // Append comment div to comments container
+                commentsContainer.appendChild(commentDiv);
+            });
+        });
+    </script>
+    
+</div>
+
+</body>
+</html>

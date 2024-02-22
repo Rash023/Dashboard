@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Dashboard</title>
+	<link rel="stylesheet" href="../static/css/dashboard.css">
+	<script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="../static/js/data.js"></script>
+</head>
+<body>
+
+<div class="wrapper" >
+    <div class="sidebar ">
+        <h2>Dashboard</h2>
+        <ul>
+            <li><a href="{%url 'Home' %}"><i class="fas fa-home"></i>Home</a></li>
+            <li><a href="{%url 'Post' %}"><i class="fas fa-user"></i>Schedule Post</a></li>
+            <li><a href="{%url 'Analytics' %}"><i class=" fas fa-project-diagram"></i>Overall Analytics</a></li>
+            <li><a href="{%url 'Comments'%}"><i class="fas fa-address-card"></i>View Comments</a></li>
+            <li><a href="{%url 'Reach'%}"><i class="fas fa-blog"></i>Reach</a></li>
+            
+        </ul> 
+       
+    </div>
+    <div class="main_content">
+       <section class="book" id="book">
+        <h1 class="heading" style=""> <span>Overall Analytics </span></h1>
+        <div class="glass-box-plot" style="margin-top:8px; display: flex; gap: 3rem;">
+           
+
+            
+            
+            <div id="likes" style="width: 700px;">
+
+            </div>
+            <div id="comments" style="width: 700px;"></div>
+            <div id="shares" style="width: 700px;"></div>
+
+        </div>
+        <div id="totalCounts" style="display: flex; gap: 30rem; padding-left: 3%; margin-top: 1%; font-size: large;color: white">
+            <p>Total Likes: <span id="totalLikes"></span></p>
+            <p>Total Comments: <span id="totalComments"></span></p>
+            <p>Total Shares: <span id="totalShares"></span></p>
+        </div>
+    </section>
+
+
+
+    <script>
+        window.onload = function () {
+            // Ensuring that data is loaded
+            console.log(data);
+
+            // Sorting data by post ID in ascending order
+            data.sort((a, b) => a.post_id - b.post_id);
+
+            // Extract likes, comments, and shares data
+            const postIds = data.map(post => post.post_id);
+            const likesData = data.map(post => post.likes);
+            const commentsData = data.map(post => post.comments.length);
+            const sharesData = data.map(post => post.shares);
+
+            // Calculating total likes, comments, and shares
+            let totalLikes = 0;
+            let totalComments = 0;
+            let totalShares = 0;
+
+            data.forEach(post => {
+                totalLikes += post.likes;
+                totalShares += post.shares;
+                totalComments += post.comments.length;
+            });
+
+            // Updating total counts in the HTML
+            document.getElementById('totalLikes').innerText = totalLikes;
+            document.getElementById('totalComments').innerText = totalComments;
+            document.getElementById('totalShares').innerText = totalShares;
+
+            // Creating line plots for likes, comments, and shares
+            createLinePlot('likes', 'Likes', postIds, likesData);
+            createLinePlot('comments', 'Comments', postIds, commentsData);
+            createLinePlot('shares', 'Shares', postIds, sharesData);
+        }
+
+        // Function to create line plot
+        function createLinePlot(containerId, metricName, postIds, metricData) {
+            const trace = {
+                x: postIds,
+                y: metricData,
+                mode: 'lines+markers',
+                name: metricName,
+                hoverinfo: 'y+text',
+                text: metricData.map((val, idx) => `Post ID: ${postIds[idx]}<br>${metricName}: ${val}`)
+            };
+
+            const layout = {
+                title: `${metricName}`,
+                xaxis: { title: 'Post ID' },
+                yaxis: { title: metricName },
+            };
+
+            Plotly.newPlot(containerId, [trace], layout);
+        }
+    </script>
+    </div>
+    </div>
+</div>
+
+</body>
+</html>

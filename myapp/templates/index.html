@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+   
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="../static/css/style.css">
+</head>
+
+<body >
+
+    <section class="services" id="services">
+        <h1 class="heading">Social Media <span>Dashboard</span></h1>
+        <div class="box-container" >
+            <div class="glass-box" style="margin-left: 190px;">
+                <i class="fas fa-notes-medical"></i>
+                <h3>Schedule Post</h3>
+                <p>Take control of your content management with our intuitive post scheduling feature. Seamlessly plan and organize your social media posts in advance, ensuring consistent and timely delivery to your audience. Effortlessly schedule posts across multiple platforms, optimize engagement, and streamline your workflow. </p>
+                <a href="{% url 'Post' %}" class="btn"> Post <span class="fas fa-chevron-right"></span></a>
+            </div>
+            <div class="glass-box">
+                <i class="fas fa-solid fa-chart-simple"></i>
+                <h3>Analytics</h3>
+                <p>Get a comprehensive overview of key metrics, trends, and user engagement data. Dive into detailed insights, including audience demographics, content performance, and sentiment analysis, empowering informed decision-making for optimizing social media strategies</p>
+                <a href="{%url 'Analytics' %}" class="btn">Analyse <span class="fas fa-chevron-right"></span></a>
+            </div>
+            
+        </section>
+
+    
+
+       
+    </section>
+
+   
+
+    <script src="./static/js/script.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,406 @@
+const data = [
+  {
+    post_id: "1",
+    author: "John Doe",
+    title: "My Book Recommendation",
+    description: "Just finished reading a great book!",
+    image_url: "https://example.com/book.jpg",
+    likes: 120,
+    shares: 50,
+    comments: [
+      {
+        user: "Bob",
+        comment: "What book was it?",
+        timestamp: "2024-02-22T12:30:45",
+      },
+      {
+        user: "Eva",
+        comment: "I'm curious too!",
+        timestamp: "2024-02-22T13:15:20",
+      },
+    ],
+  },
+  {
+    post_id: "2",
+    author: "John Doe",
+    title: "Rainy Day Coffee",
+    description: "Enjoying a cup of coffee on this rainy day.",
+    image_url: "https://example.com/coffee.jpg",
+    likes: 230,
+    shares: 80,
+    comments: [
+      {
+        user: "Alice",
+        comment: "Looks cozy!",
+        timestamp: "2024-02-22T10:20:15",
+      },
+    ],
+  },
+  {
+    post_id: "3",
+    author: "John Doe",
+    title: "Hiking Adventures",
+    description: "Exploring new hiking trails 🏞️",
+    image_url: "https://example.com/hiking.jpg",
+    likes: 350,
+    shares: 120,
+    comments: [
+      {
+        user: "John",
+        comment: "Beautiful view!",
+        timestamp: "2024-02-22T14:45:30",
+      },
+      {
+        user: "Sarah",
+        comment: "Which trail is this?",
+        timestamp: "2024-02-22T15:10:22",
+      },
+    ],
+  },
+  {
+    post_id: "4",
+    author: "John Doe",
+    title: "Celebrating Love",
+    description: "Happy birthday to my amazing wife!",
+    image_url: "https://example.com/birthday.jpg",
+    likes: 540,
+    shares: 200,
+    comments: [
+      {
+        user: "Lisa",
+        comment: "Best wishes!",
+        timestamp: "2024-02-22T08:00:00",
+      },
+    ],
+  },
+  {
+    post_id: "5",
+    author: "John Doe",
+    title: "New Job Announcement",
+    description: "Excited to announce my new job!",
+    likes: 420,
+    shares: 150,
+    comments: [
+      {
+        user: "David",
+        comment: "Congratulations!",
+        timestamp: "2024-02-22T09:45:10",
+      },
+      {
+        user: "Olivia",
+        comment: "That's amazing news!",
+        timestamp: "2024-02-22T10:00:25",
+      },
+    ],
+  },
+  {
+    post_id: "6",
+    author: "John Doe",
+    title: "Spectacular Sunset",
+    description: "Watching the sunset from my balcony.",
+    image_url: "https://example.com/sunset.jpg",
+    likes: 670,
+    shares: 300,
+    comments: [
+      {
+        user: "Sophia",
+        comment: "What a breathtaking view!",
+        timestamp: "2024-02-22T19:00:00",
+      },
+    ],
+  },
+  {
+    post_id: "7",
+    author: "John Doe",
+    title: "Memories of Paris",
+    description: "Throwback to my trip to Paris ✈️🗼",
+    image_url: "https://example.com/paris.jpg",
+    likes: 890,
+    shares: 400,
+    comments: [
+      {
+        user: "James",
+        comment: "I miss Paris!",
+        timestamp: "2024-02-22T11:30:40",
+      },
+      {
+        user: "Emma",
+        comment: "Such a lovely photo!",
+        timestamp: "2024-02-22T12:00:15",
+      },
+    ],
+  },
+  {
+    post_id: "8",
+    author: "John Doe",
+    title: "Graduation Day",
+    description: "Celebrating my graduation 🎓🎉",
+    image_url: "https://example.com/graduation.jpg",
+    likes: 1100,
+    shares: 500,
+    comments: [
+      {
+        user: "Noah",
+        comment: "Congratulations!",
+        timestamp: "2024-02-22T16:20:30",
+      },
+    ],
+  },
+  {
+    post_id: "9",
+    author: "John Doe",
+    title: "Lakeside Getaway",
+    description: "Enjoying a weekend getaway by the lake.",
+    image_url: "https://example.com/lake.jpg",
+    likes: 780,
+    shares: 350,
+    comments: [
+      {
+        user: "Ava",
+        comment: "Looks peaceful!",
+        timestamp: "2024-02-22T13:40:50",
+      },
+    ],
+  },
+  {
+    post_id: "10",
+    author: "John Doe",
+    title: "Family Time",
+    description: "Spending quality time with family ❤️",
+    likes: 920,
+    shares: 400,
+    comments: [
+      {
+        user: "Mia",
+        comment: "Family is everything!",
+        timestamp: "2024-02-22T18:15:00",
+      },
+      {
+        user: "Liam",
+        comment: "Cherish these moments!",
+        timestamp: "2024-02-22T18:30:20",
+      },
+    ],
+  },
+  {
+    post_id: "11",
+    author: "John Doe",
+    title: "Mountain Hike",
+    description: "Enjoying a hike in the mountains.",
+    image_url: "https://example.com/mountains.jpg",
+    likes: 630,
+    shares: 250,
+    comments: [
+      {
+        user: "Charlotte",
+        comment: "Looks like a great adventure!",
+        timestamp: "2024-02-22T09:10:30",
+      },
+    ],
+  },
+  {
+    post_id: "12",
+    author: "John Doe",
+    title: "Cooking Adventures",
+    description: "Trying out new recipes in the kitchen 🍳",
+    likes: 380,
+    shares: 180,
+    comments: [
+      {
+        user: "Daniel",
+        comment: "Looks delicious!",
+        timestamp: "2024-02-22T14:55:10",
+      },
+      {
+        user: "Ava",
+        comment: "Can you share the recipe?",
+        timestamp: "2024-02-22T15:30:40",
+      },
+    ],
+  },
+  {
+    post_id: "13",
+    author: "John Doe",
+    title: "Gardening Time",
+    description: "Spending the afternoon in the garden.",
+    image_url: "https://example.com/garden.jpg",
+    likes: 440,
+    shares: 200,
+    comments: [
+      {
+        user: "Harper",
+        comment: "Your garden looks lovely!",
+        timestamp: "2024-02-22T12:15:00",
+      },
+    ],
+  },
+  {
+    post_id: "14",
+    author: "John Doe",
+    title: "Gratitude",
+    description: "Feeling grateful for the little things in life.",
+    likes: 550,
+    shares: 300,
+    comments: [
+      {
+        user: "Benjamin",
+        comment: "Gratitude is key!",
+        timestamp: "2024-02-22T07:45:20",
+      },
+    ],
+  },
+  {
+    post_id: "15",
+    author: "John Doe",
+    title: "Beach Day",
+    description: "Enjoying a sunny day at the beach ☀️🏖️",
+    image_url: "https://example.com/beach.jpg",
+    likes: 960,
+    shares: 450,
+    comments: [
+      {
+        user: "Harper",
+        comment: "Wish I was there!",
+        timestamp: "2024-02-22T11:20:15",
+      },
+      {
+        user: "Ella",
+        comment: "Looks like paradise!",
+        timestamp: "2024-02-22T11:40:30",
+      },
+    ],
+  },
+  {
+    post_id: "16",
+    author: "John Doe",
+    title: "Furry Friend's Birthday",
+    description: "Celebrating my dog's birthday! 🐶🎉",
+    likes: 780,
+    shares: 350,
+    comments: [
+      {
+        user: "Oliver",
+        comment: "Happy birthday to your furry friend!",
+        timestamp: "2024-02-22T17:10:40",
+      },
+    ],
+  },
+  {
+    post_id: "17",
+    author: "John Doe",
+    title: "Night Cityscape",
+    description: "Exploring the city streets at night.",
+    image_url: "https://example.com/city.jpg",
+    likes: 890,
+    shares: 400,
+    comments: [
+      {
+        user: "Mia",
+        comment: "City lights are mesmerizing!",
+        timestamp: "2024-02-22T19:30:00",
+      },
+      {
+        user: "Mia",
+        comment: "City lights are mesmerizing!",
+        timestamp: "2024-02-22T19:30:00",
+      },
+      {
+        user: "Mia",
+        comment: "City lights are mesmerizing!",
+        timestamp: "2024-02-22T19:30:00",
+      },
+      {
+        user: "Mia",
+        comment: "City lights are mesmerizing!",
+        timestamp: "2024-02-22T19:30:00",
+      },
+      {
+        user: "Mia",
+        comment: "City lights are mesmerizing!",
+        timestamp: "2024-02-22T19:30:00",
+      },
+      {
+        user: "Mia",
+        comment: "City lights are mesmerizing!",
+        timestamp: "2024-02-22T19:30:00",
+      },
+      {
+        user: "Mia",
+        comment: "City lights are mesmerizing!",
+        timestamp: "2024-02-22T19:30:00",
+      },
+      {
+        user: "Mia",
+        comment: "City lights are mesmerizing!",
+        timestamp: "2024-02-22T19:30:00",
+      },
+      {
+        user: "Mia",
+        comment: "City lights are mesmerizing!",
+        timestamp: "2024-02-22T19:30:00",
+      },
+      {
+        user: "Mia",
+        comment: "City lights are mesmerizing!",
+        timestamp: "2024-02-22T19:30:00",
+      },
+      {
+        user: "Mia",
+        comment: "City lights are mesmerizing!",
+        timestamp: "2024-02-22T19:30:00",
+      },
+      {
+        user: "Mia",
+        comment: "City lights are mesmerizing!",
+        timestamp: "2024-02-22T19:30:00",
+      },
+      {
+        user: "Mia",
+        comment: "City lights are mesmerizing!",
+        timestamp: "2024-02-22T19:30:00",
+      },
+    ],
+  },
+  {
+    post_id: "18",
+    author: "John Doe",
+    title: "Music Concert",
+    description: "Attending a live music concert 🎶",
+    likes: 1100,
+    shares: 500,
+    comments: [
+      { user: "Logan", comment: "Rock on!", timestamp: "2024-02-22T21:15:20" },
+    ],
+  },
+  {
+    post_id: "19",
+    author: "John Doe",
+    title: "Learning Guitar",
+    description: "Learning to play the guitar 🎸",
+    likes: 950,
+    shares: 450,
+    comments: [
+      {
+        user: "Liam",
+        comment: "Keep practicing!",
+        timestamp: "2024-02-22T16:40:30",
+      },
+    ],
+  },
+  {
+    post_id: "20",
+    author: "John Doe",
+    title: "Historical Adventure",
+    description: "Exploring ancient ruins in Greece.",
+    image_url: "https://example.com/ruins.jpg",
+    likes: 820,
+    shares: 380,
+    comments: [
+      {
+        user: "Ella",
+        comment: "So much history!",
+        timestamp: "2024-02-22T12:45:10",
+      },
+    ],
+  },
+];
